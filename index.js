@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./database.js";
+import './cron-job.js';
+import CRYPTO_ROUTER from "./routes/crypto.routes.js";
 
 dotenv.config();
 connectDB();
@@ -10,6 +12,8 @@ connectDB();
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+
+app.use("/api", CRYPTO_ROUTER);
 
 app.get("/", (req, res) => {
   res.send("Server is working");
