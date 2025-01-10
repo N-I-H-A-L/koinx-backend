@@ -2,8 +2,10 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
+import { connectDB } from "./database.js";
 
 dotenv.config();
+connectDB();
 
 const app = express();
 app.use(bodyParser.json());
